@@ -5,13 +5,12 @@ const getSrcset = (imgPath, extension) =>
   [1, 2, 3].map(m => imgPath.replace('.jpg', m === 1 ? extension : `@${m}x${extension} ${m}x`)).join(', ')
 
 const PhotoGridItem = ({ id, src, alt, tags }) => {
-  console.log(getSrcset(src, '.avif'))
   return (
     <article>
       <Anchor href={`/photos/${id}`}>
         <picture>
           <source type="image/avif" srcSet={getSrcset(src, '.avif')} />
-          <Image src={src} />
+          <Image src={src} alt={alt}/>
         </picture>
       </Anchor>
       <Tags>
